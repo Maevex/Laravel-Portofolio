@@ -1,3 +1,3 @@
 <div>
-    <!-- Simplicity is the ultimate sophistication. - Leonardo da Vinci -->
+    <p>THis is home page</p>
 </div>
