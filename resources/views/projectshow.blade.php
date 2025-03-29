@@ -53,10 +53,16 @@
 
 
                 <div class="mt-4">
-          <a href="{{ route('projects.index') }}" class="btn btn-secondary">Back to Projects</a>
-          <a href="{{ route('projects.edit', $project->id) }}" class="btn btn-primary">Edit</a>
-          <a href="#" class="btn btn-danger">Delete</a>
-        </div>
+    <a href="{{ route('projects.index') }}" class="btn btn-secondary">Back to Projects</a>
+    <a href="{{ route('projects.edit', $project->id) }}" class="btn btn-primary">Edit</a>
+
+    <form action="{{ route('projects.destroy', $project->id) }}" method="POST" style="display: inline;" onsubmit="return confirm('Are you sure you want to delete this project?');">
+        @csrf
+        @method('DELETE')
+        <button type="submit" class="btn btn-danger">Delete</button>
+    </form>
+</div>
+
             </div>
         </div>
       </section>

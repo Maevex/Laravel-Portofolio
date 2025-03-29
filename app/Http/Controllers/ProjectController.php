@@ -51,6 +51,35 @@ public function update(Request $request, $id)
     return redirect()->route('project.show', $id)->with('success', 'Project updated successfully!');
 }
 
+public function destroy($id)
+{
+    $project = Project::findOrFail($id);
+    $project->delete();
+
+    return redirect()->route('projects.index')->with('success', 'Project deleted successfully');
+}
+
+public function create()
+{
+    return view('projectcreate');
+}
+
+public function store(Request $request)
+{
+    $request->validate([
+        'category' => 'required|string|max:255',
+        'title' => 'required|string|max:255',
+        'overview' => 'required|string|max:500',
+        'description' => 'required|string',
+    ]);
+
+    Project::create($request->all());
+
+    return redirect()->route('projects.index')->with('success', 'Project successfully created!');
+}
+
+
+
 
 
 }
