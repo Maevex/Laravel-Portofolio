@@ -2,17 +2,15 @@
     <h1 id="colorlib-logo"><a href="{{ url('/') }}">Ilham<span>.</span></a></h1>
     <nav id="colorlib-main-menu" role="navigation">
         <ul>
-        <li class="{{ Request::is('/') ? 'colorlib-active' : '' }}">
-    <a href="{{ url('/') }}">Home</a>
-</li>
-<li class="{{ Request::is('projects') ? 'colorlib-active' : '' }}">
-    <a href="{{ url('/projects') }}">Projects</a>
-</li>
-
-<li class="{{ Request::is('projects') ? 'colorlib-active' : '' }}">
-<a href="{{ url('/projects/create') }}">Add New Project</a>
-</li>
-
+            <li class="{{ Request::is('/') ? 'colorlib-active' : '' }}">
+                <a href="{{ url('/') }}">Home</a>
+            </li>
+            <li class="{{ Request::is('projects') || Request::is('projects/*/edit') || Request::is('project/*') ? 'colorlib-active' : '' }}">
+                <a href="{{ url('/projects') }}">Projects</a>
+            </li>
+            <li class="{{ Request::is('projects/create') ? 'colorlib-active' : '' }}">
+                <a href="{{ url('/projects/create') }}">Add New Project</a>
+            </li>
         </ul>
     </nav>
 
