@@ -3,7 +3,9 @@
 
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProjectController;
 
-Route::get('/profile', function () {
-    return view('profile');
-});
+Route::get('/', [HomeController::class, 'index']);
+Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');
+Route::get('/projects/{id}', [ProjectController::class, 'show'])->name('projects.show');
