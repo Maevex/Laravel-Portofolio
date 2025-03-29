@@ -21,7 +21,36 @@ class ProjectController extends Controller
     public function show($id)
 {
     $project = Project::findOrFail($id);
-    return view('projects.show', compact('project'));
+    return view('projectshow', compact('project')); // Menggunakan 'projectshow.blade.php'
 }
+
+public function edit($id)
+{
+    $project = Project::findOrFail($id);
+    return view('projectedit', compact('project'));
+}
+
+
+public function update(Request $request, $id)
+{
+    $request->validate([
+        'category' => 'required|string|max:255',
+        'title' => 'required|string|max:255',
+        'overview' => 'required|string',
+        'description' => 'required|string',
+    ]);
+
+    $project = Project::findOrFail($id);
+    $project->update([
+        'category' => $request->category,
+        'title' => $request->title,
+        'overview' => $request->overview,
+        'description' => $request->description,
+    ]);
+
+    return redirect()->route('project.show', $id)->with('success', 'Project updated successfully!');
+}
+
+
 
 }
