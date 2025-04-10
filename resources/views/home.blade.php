@@ -81,7 +81,7 @@
 		              	</p>
 	              	</div>
 	              	<div class="half">
-		              	<p><a href="#" class="btn py-2">Continue Reading <span class="ion-ios-arrow-forward"></span></a></p>
+                  <p><a href="{{ route('project.show', $project->id) }}" class="btn py-2">Continue Reading <span class="ion-ios-arrow-forward"></span></a></p>
 	              	</div>
 	              </div>
 	            </div>
